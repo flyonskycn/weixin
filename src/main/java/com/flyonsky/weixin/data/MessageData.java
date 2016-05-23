@@ -2,6 +2,11 @@ package com.flyonsky.weixin.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 接受微信公从号的消息和事件通知实体
+ * @author Administrator
+ *
+ */
 public class MessageData {
 
 	@JsonProperty("ToUserName")

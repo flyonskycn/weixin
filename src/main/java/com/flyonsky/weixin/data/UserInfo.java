@@ -2,6 +2,11 @@ package com.flyonsky.weixin.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 公众号获取的用户信息
+ * @author Administrator
+ *
+ */
 public class UserInfo extends BaseData{
 
 	@JsonProperty("openid")

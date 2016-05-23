@@ -2,6 +2,11 @@ package com.flyonsky.weixin.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 服务号获取的AccessToken实体
+ * @author Administrator
+ *
+ */
 public class AccessToken extends BaseData{
 
 	@JsonProperty("access_token")

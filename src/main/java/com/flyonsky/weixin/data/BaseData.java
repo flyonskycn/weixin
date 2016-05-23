@@ -2,6 +2,11 @@ package com.flyonsky.weixin.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 公从号服务号接受数据的基类
+ * @author Administrator
+ *
+ */
 public class BaseData {
 
 	@JsonProperty("errcode")
