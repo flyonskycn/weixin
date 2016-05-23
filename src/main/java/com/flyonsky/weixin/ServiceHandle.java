@@ -2,6 +2,9 @@ package com.flyonsky.weixin;
 
 import org.dom4j.Document;
 
+import com.flyonsky.weixin.data.MessageData;
+import com.flyonsky.weixin.data.UserInfo;
+
 /**
  * 微信服务号处理接口
  * @author Administrator

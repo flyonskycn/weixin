@@ -8,6 +8,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.flyonsky.weixin.data.AccessToken;
+import com.flyonsky.weixin.data.BaseData;
+import com.flyonsky.weixin.data.EnumScope;
+import com.flyonsky.weixin.data.UserInfo;
+
 @Service
 public class WebHandleImp extends AbstractHandle implements WebHandle{
 	

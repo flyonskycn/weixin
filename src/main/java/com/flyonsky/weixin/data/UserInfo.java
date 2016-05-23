@@ -1,4 +1,4 @@
-package com.flyonsky.weixin;
+package com.flyonsky.weixin.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

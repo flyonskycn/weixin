@@ -1,4 +1,4 @@
-package com.flyonsky.weixin;
+package com.flyonsky.weixin.data;
 
 /**
  * 消息类型枚举

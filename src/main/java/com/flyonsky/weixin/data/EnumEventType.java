@@ -1,4 +1,4 @@
-package com.flyonsky.weixin;
+package com.flyonsky.weixin.data;
 
 /**
  * 事件类型枚举

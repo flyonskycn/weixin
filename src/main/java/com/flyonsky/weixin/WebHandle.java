@@ -1,5 +1,9 @@
 package com.flyonsky.weixin;
 
+import com.flyonsky.weixin.data.AccessToken;
+import com.flyonsky.weixin.data.EnumScope;
+import com.flyonsky.weixin.data.UserInfo;
+
 /**
  * 微信的web服务接口
  * @author Administrator

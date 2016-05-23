@@ -1,4 +1,4 @@
-package com.flyonsky.weixin;
+package com.flyonsky.weixin.data;
 
 /**
  * 页面授权类型枚举

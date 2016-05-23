@@ -11,6 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.flyonsky.weixin.data.AccessToken;
+import com.flyonsky.weixin.data.MessageData;
+import com.flyonsky.weixin.data.UserInfo;
+
 @Service
 public class ServiceHandleImp extends AbstractHandle implements ServiceHandle{
 	

@@ -1,4 +1,4 @@
-package com.flyonsky.weixin;
+package com.flyonsky.weixin.data;
 
 /**
  * 微信请求授权的来源
