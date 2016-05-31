@@ -1,6 +1,8 @@
 package com.flyonsky.weixin.data;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 /**
@@ -9,30 +11,31 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
  *
  */
 @JacksonXmlRootElement(localName="xml")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UnifiedOrderData extends PayRequestBase{
 	
 	// 设备号
 	@JsonProperty("device_info")
 	private String deviceInfo;
 	
-	// 随机字符串
-	@JsonProperty("nonce_str")
-	private String nonceStr;
-	
 	// 商品描述
 	@JsonProperty("body")
+	@JacksonXmlCData
 	private String body;
 	
 	// 商品详情
 	@JsonProperty("detail")
+	@JacksonXmlCData
 	private String detail;
 	
 	// 附加数据
 	@JsonProperty("attach")
+	@JacksonXmlCData
 	private String attach;
 	
 	// 商户订单号
 	@JsonProperty("out_trade_no")
+	@JacksonXmlCData
 	private String outTradeNo;
 	
 	// 货币类型
@@ -41,6 +44,7 @@ public class UnifiedOrderData extends PayRequestBase{
 	
 	// 总金额
 	@JsonProperty("total_fee")
+	@JacksonXmlCData
 	private int totalFee;
 	
 	// 终端IP
@@ -49,10 +53,12 @@ public class UnifiedOrderData extends PayRequestBase{
 	
 	// 交易起始时间
 	@JsonProperty("time_start")
+	@JacksonXmlCData
 	private String timeStart;
 	
 	// 交易结束时间
 	@JsonProperty("time_expire")
+	@JacksonXmlCData
 	private String timeExpire;
 	
 	// 商品标记
@@ -61,6 +67,7 @@ public class UnifiedOrderData extends PayRequestBase{
 	
 	// 通知地址
 	@JsonProperty("notify_url")
+	@JacksonXmlCData
 	private String notifyUrl;
 	
 	// 交易类型
@@ -85,14 +92,6 @@ public class UnifiedOrderData extends PayRequestBase{
 
 	public void setDeviceInfo(String deviceInfo) {
 		this.deviceInfo = deviceInfo;
-	}
-
-	public String getNonceStr() {
-		return nonceStr;
-	}
-
-	public void setNonceStr(String nonceStr) {
-		this.nonceStr = nonceStr;
 	}
 
 	public String getBody() {

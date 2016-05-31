@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Administrator
  *
  */
-public class JSPayData {
+public class JSPayData extends AbstractData{
 	// 公众号id
 	@JsonProperty("appId")
 	private String appId;

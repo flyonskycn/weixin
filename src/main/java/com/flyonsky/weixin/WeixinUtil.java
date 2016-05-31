@@ -1,6 +1,7 @@
 package com.flyonsky.weixin;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -125,12 +126,14 @@ public class WeixinUtil {
 		while(!cls.equals(Object.class)){
 			fs = cls.getDeclaredFields();
 			for(Field f : fs){
+				if(Modifier.isStatic(f.getModifiers()))
+					break;
 				try {
 					f.setAccessible(true);
 					objValue = f.get(data);
 					noSign = f.getAnnotation(NoSign.class);
 					if(objValue != null 
-							&& StringUtils.isBlank(objValue.toString()) 
+							&& StringUtils.isNotBlank(objValue.toString()) 
 							&& noSign == null){
 						annot = f.getAnnotation(JsonProperty.class);
 						if(annot != null){
@@ -143,7 +146,6 @@ public class WeixinUtil {
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 					LOG.error(e.getMessage());
 				}
-				annot = f.getAnnotation(JsonProperty.class);
 			}
 			cls = cls.getSuperclass();
 		}

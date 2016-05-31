@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Administrator
  *
  */
-public class ServiceBaseParam {
+public class ServiceBaseParam extends AbstractData {
 
 	@JsonProperty("errcode")
 	private int errCode;

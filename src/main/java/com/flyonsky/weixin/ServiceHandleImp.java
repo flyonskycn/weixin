@@ -20,12 +20,15 @@ public class ServiceHandleImp extends AbstractHandle implements ServiceHandle{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ServiceHandle.class);
 	
+	// 微信服务号基本地址
 	@Value("${weixin.service.base.url}")
 	private String serviceBaseUrl;
 	
+	// 微信服务号token获取地址
 	@Value("${weixin.service.token.url}")
 	private String serviceTokenUrl;
 	
+	// 微信服务号用户信息获取地址
 	@Value("${weixin.service.user.url}")
 	private String serviceUserInfoUrl;
 	
@@ -48,12 +51,6 @@ public class ServiceHandleImp extends AbstractHandle implements ServiceHandle{
 			flag = true;
 		}
 		return flag;
-	}
-
-	@Override
-	public MessageData receiveHandler(Document doc) {
-		MessageData data = this.xmlToJava(doc.asXML(), MessageData.class);
-		return data;
 	}
 
 	@Override

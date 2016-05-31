@@ -24,13 +24,6 @@ public interface ServiceHandle {
 	boolean checkSignature(String token, String signature,String timestamp,String nonce,String echostr);
 	
 	/**
-	 * 微信服务号接收处理
-	 * @param doc 微信事件参数
-	 * @return 响应消息
-	 */
-	MessageData receiveHandler(Document doc);
-	
-	/**
 	 * 微信服务号获取access token
 	 * @param appid 第三方用户唯一凭证
 	 * @param secret 第三方用户唯一凭证密钥，即appsecret

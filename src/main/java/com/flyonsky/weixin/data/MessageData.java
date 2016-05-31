@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Administrator
  *
  */
-public class MessageData {
+public class MessageData extends AbstractData {
 
 	@JsonProperty("ToUserName")
 	private String toUserName;
