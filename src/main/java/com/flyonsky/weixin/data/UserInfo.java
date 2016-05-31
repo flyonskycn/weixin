@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Administrator
  *
  */
-public class UserInfo extends BaseData{
+public class UserInfo extends ServiceBaseParam{
 
 	@JsonProperty("openid")
 	private String openId;

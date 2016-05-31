@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.flyonsky.weixin.data.AccessToken;
-import com.flyonsky.weixin.data.BaseData;
 import com.flyonsky.weixin.data.EnumScope;
+import com.flyonsky.weixin.data.ServiceBaseParam;
 import com.flyonsky.weixin.data.UserInfo;
 
 @Service
@@ -89,7 +89,7 @@ public class WebHandleImp extends AbstractHandle implements WebHandle{
 	@Override
 	public boolean accessTokenValid(String accessToken, String openid) {
 		String url = this.getWebBaseUrl() + MessageFormat.format(this.getTokenValidUrl(), accessToken, openid);
-		BaseData base = this.doGet(url, BaseData.class);
+		ServiceBaseParam base = this.doGet(url, ServiceBaseParam.class);
 		return base.getErrCode() == 0 ? true: false;
 	}
 
