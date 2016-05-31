@@ -50,7 +50,7 @@ public class WebHandleImp extends AbstractHandle implements WebHandle{
 	private String webAuthorizeUrl;
 
 	@Override
-	public String webAuthorize(String appid, EnumScope scope, String redirectUri) {
+	public String authorizeUrl(String appid, EnumScope scope, String redirectUri) {
 		Random random = new Random();
 		int r = random.nextInt();
 		String url = "";

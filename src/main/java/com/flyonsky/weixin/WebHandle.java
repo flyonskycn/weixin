@@ -18,7 +18,7 @@ public interface WebHandle {
 	 * @param redirectUri 授权后重定向的回调链接地址，请使用urlencode对链接进行处理
 	 * @return 微信授权地址
 	 */
-	String webAuthorize(String appid, EnumScope scope, String redirectUri);
+	String authorizeUrl(String appid, EnumScope scope, String redirectUri);
 	
 	/**
 	 * 通过code换取网页授权access_token
