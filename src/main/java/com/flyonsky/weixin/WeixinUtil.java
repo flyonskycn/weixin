@@ -1,5 +1,8 @@
 package com.flyonsky.weixin;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.nio.charset.Charset;
@@ -10,12 +13,18 @@ import java.util.Random;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import javax.imageio.ImageIO;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.flyonsky.weixin.data.NoSign;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 
 /**
  * 微信相关的工具类
@@ -31,6 +40,11 @@ public class WeixinUtil {
             "8", "9", "a", "b", "c", "d", "e", "f"};
     
     private static final String TEMPLATE = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
+    // 黒色
+    private static final int BLACK = 0xff000000;
+    // 白色
+    private static final int WHITE = 0xFFFFFFFF;
 
     /**
      * 转换字节数组为16进制字串
@@ -172,5 +186,37 @@ public class WeixinUtil {
 	        sb.append(TEMPLATE.charAt(r.nextInt(range)));    
 	    }    
 	    return sb.toString();    
-	}    
+	}
+	
+	/**
+	 * 生成二维码
+	 * @param content
+	 * @param width
+	 * @param height
+	 * @return
+	 */
+	public static byte[] qrCode(String content,String fomat,int width,int height){
+		// 对内容按指定大小进行编码
+		BitMatrix bitMatrix = null;
+		try {
+			bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, width, height);
+		} catch (WriterException e) {
+			LOG.error(e.getMessage());
+		}
+		// 生成图片
+		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		for (int x = 0; x < width; x++) {
+		     for (int y = 0; y < height; y++) {
+		          image.setRGB(x, y, bitMatrix.get(x, y) == true ? BLACK : WHITE);
+		     }
+		}
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+		try {
+			ImageIO.write(image, fomat, output);
+		} catch (IOException e) {
+			LOG.error(e.getMessage());
+		}
+		return output.toByteArray();
+	}
 }

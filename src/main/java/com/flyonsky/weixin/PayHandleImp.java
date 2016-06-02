@@ -150,6 +150,7 @@ public class PayHandleImp extends AbstractHandle implements PayHandle{
 	@Override
 	public UnifiedOrderReceive unifiedOrder(UnifiedOrderData orderData, String key) {
 		String url = this.getBaseUrl() + this.getUnifiedOrderUrl();
+		orderData.setNonceStr(WeixinUtil.randomString(WeixinConst.RANDOM_STRING_LENGTH));
 		String sign = WeixinUtil.sign(orderData, key);
 		orderData.setSign(sign);
 		UnifiedOrderReceive receive = null;
@@ -165,7 +166,7 @@ public class PayHandleImp extends AbstractHandle implements PayHandle{
 	public JSPayData jsPayOrder(String appId, String prepayId, String key) {
 		JSPayData payData = new JSPayData();
 		payData.setAppId(appId);
-		payData.setNonceStr(WeixinUtil.randomString(24));
+		payData.setNonceStr(WeixinUtil.randomString(WeixinConst.RANDOM_STRING_LENGTH));
 		payData.setPackageInfo("prepay_id=" + prepayId);
 		long ms = System.currentTimeMillis()/1000;
 		payData.setTimeStamp(String.valueOf(ms));
@@ -180,6 +181,7 @@ public class PayHandleImp extends AbstractHandle implements PayHandle{
 	@Override
 	public OrderQueryReceive queryOrder(OrderQueryParam param, String key) {
 		String url = this.getBaseUrl() + this.getOrderQueryUrl();
+		param.setNonceStr(WeixinUtil.randomString(WeixinConst.RANDOM_STRING_LENGTH));
 		String sign = WeixinUtil.sign(param, key);
 		param.setSign(sign);
 		OrderQueryReceive receive = null;
@@ -194,6 +196,7 @@ public class PayHandleImp extends AbstractHandle implements PayHandle{
 	@Override
 	public PayReceiveBase closeOrder(CloseOrderParam param, String key) {
 		String url = this.getBaseUrl() + this.getCloseOrderUrl();
+		param.setNonceStr(WeixinUtil.randomString(WeixinConst.RANDOM_STRING_LENGTH));
 		String sign = WeixinUtil.sign(param, key);
 		param.setSign(sign);
 		PayReceiveBase receive = null;
@@ -208,6 +211,7 @@ public class PayHandleImp extends AbstractHandle implements PayHandle{
 	@Override
 	public RefundReceive refund(RefundParam param, String key) {
 		String url = this.getBaseUrl() + this.getRefundUrl();
+		param.setNonceStr(WeixinUtil.randomString(WeixinConst.RANDOM_STRING_LENGTH));
 		String sign = WeixinUtil.sign(param, key);
 		param.setSign(sign);
 		RefundReceive receive = null;
@@ -222,6 +226,7 @@ public class PayHandleImp extends AbstractHandle implements PayHandle{
 	@Override
 	public RefundQueryReceive queryRefund(RefundQueryParam param, String key) {
 		String url = this.getBaseUrl() + this.getRefundQueryUrl();
+		param.setNonceStr(WeixinUtil.randomString(WeixinConst.RANDOM_STRING_LENGTH));
 		String sign = WeixinUtil.sign(param, key);
 		param.setSign(sign);
 		RefundQueryReceive receive = null;

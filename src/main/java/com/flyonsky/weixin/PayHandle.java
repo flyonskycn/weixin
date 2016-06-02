@@ -60,7 +60,6 @@ public interface PayHandle {
 	 */
 	RefundReceive refund(RefundParam param, String key);
 	
-	
 	/**
 	 * 退款单查询
 	 * @param param 退款单查询参数
