@@ -4,7 +4,6 @@
   <artifactId>weixin</artifactId>
   <version>3.0.1</version>
   <build>
-    <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -104,6 +103,11 @@
 	    <groupId>com.fasterxml</groupId>
 	    <artifactId>aalto-xml</artifactId>
 	    <version>1.0.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.codehaus.woodstox</groupId>
+		<artifactId>woodstox-core-asl</artifactId>
+		<version>4.4.0</version>
 	</dependency>
     <dependency>
 		<groupId>org.apache.commons</groupId>

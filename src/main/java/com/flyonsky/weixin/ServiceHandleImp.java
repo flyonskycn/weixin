@@ -20,15 +20,15 @@ public class ServiceHandleImp extends AbstractHandle implements ServiceHandle{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ServiceHandle.class);
 	
-	// 微信服务号基本地址
+	// 寰俊鏈嶅姟鍙峰熀鏈湴鍧�
 	@Value("${weixin.service.base.url}")
 	private String serviceBaseUrl;
 	
-	// 微信服务号token获取地址
+	// 寰俊鏈嶅姟鍙穞oken鑾峰彇鍦板潃
 	@Value("${weixin.service.token.url}")
 	private String serviceTokenUrl;
 	
-	// 微信服务号用户信息获取地址
+	// 寰俊鏈嶅姟鍙风敤鎴蜂俊鎭幏鍙栧湴鍧�
 	@Value("${weixin.service.user.url}")
 	private String serviceUserInfoUrl;
 	
