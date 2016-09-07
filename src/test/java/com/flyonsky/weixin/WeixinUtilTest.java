@@ -10,8 +10,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.flyonsky.BaseSpringJUnit;
-import com.flyonsky.weixin.data.NotifyReceive;
-import com.flyonsky.weixin.data.UnifiedOrderData;
+import com.flyonsky.weixin.data.pay.NotifyReceive;
+import com.flyonsky.weixin.data.pay.UnifiedOrderParam;
 
 /**
  * 微信签名工具类单元测试用例
@@ -54,7 +54,7 @@ public class WeixinUtilTest extends BaseSpringJUnit{
 		
 		ObjectMapper mapper = new XmlMapper();
 		
-		UnifiedOrderData data = mapper.readValue(xml, UnifiedOrderData.class);
+		UnifiedOrderParam data = mapper.readValue(xml, UnifiedOrderParam.class);
 		Assert.assertNotNull(data);
 		String sign = WeixinUtil.sign(data, key);
 		
