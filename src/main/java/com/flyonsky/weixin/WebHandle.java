@@ -2,10 +2,9 @@ package com.flyonsky.weixin;
 
 import com.flyonsky.weixin.data.AccessToken;
 import com.flyonsky.weixin.data.EnumScope;
-import com.flyonsky.weixin.data.UserInfo;
 
 /**
- * 微信的web服务接口
+ * 微信web内访问服务接口
  * @author Administrator
  *
  */
@@ -36,14 +35,6 @@ public interface WebHandle {
 	 * @return
 	 */
 	AccessToken refreshToken(String appid,String refreshToken);
-	
-	/**
-	 * 获取用户信息
-	 * @param accessToken 网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同
-	 * @param openid 用户的唯一标识
-	 * @return
-	 */
-	UserInfo userInfo(String accessToken, String openid);
 	
 	/**
 	 * 检验授权凭证（access_token）是否有效

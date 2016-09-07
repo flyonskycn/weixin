@@ -31,4 +31,14 @@ public class WeixinConst {
 	 * 异步通知的回调结果
 	 */
 	public final static String MSG_OK = "OK";
+	
+	/**
+	 * 成功
+	 */
+	public final static int ERRCODE_SUCCESS = 0;
+	
+	/**
+	 * 已关注
+	 */
+	public final static int SUBSCRIBE = 1;
 }

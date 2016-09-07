@@ -1,6 +1,8 @@
-package com.flyonsky.weixin.data;
+package com.flyonsky.weixin.data.pay;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.flyonsky.weixin.data.AbstractData;
+import com.flyonsky.weixin.data.NoSign;
 
 /**
  * 微信公众号内发起的，网页端调起支付请求数据

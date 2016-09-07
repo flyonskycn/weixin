@@ -1,16 +1,22 @@
 package com.flyonsky.weixin;
 
-import com.flyonsky.weixin.data.CloseOrderParam;
-import com.flyonsky.weixin.data.JSPayData;
-import com.flyonsky.weixin.data.OrderQueryParam;
-import com.flyonsky.weixin.data.OrderQueryReceive;
-import com.flyonsky.weixin.data.PayReceiveBase;
-import com.flyonsky.weixin.data.RefundParam;
-import com.flyonsky.weixin.data.RefundQueryParam;
-import com.flyonsky.weixin.data.RefundQueryReceive;
-import com.flyonsky.weixin.data.RefundReceive;
-import com.flyonsky.weixin.data.UnifiedOrderData;
-import com.flyonsky.weixin.data.UnifiedOrderReceive;
+import com.flyonsky.weixin.data.pay.CloseOrderParam;
+import com.flyonsky.weixin.data.pay.JSPayData;
+import com.flyonsky.weixin.data.pay.MicroPayParam;
+import com.flyonsky.weixin.data.pay.MicroPayReceive;
+import com.flyonsky.weixin.data.pay.OrderQueryParam;
+import com.flyonsky.weixin.data.pay.OrderQueryReceive;
+import com.flyonsky.weixin.data.pay.PayReceive;
+import com.flyonsky.weixin.data.pay.RefundParam;
+import com.flyonsky.weixin.data.pay.RefundQueryParam;
+import com.flyonsky.weixin.data.pay.RefundQueryReceive;
+import com.flyonsky.weixin.data.pay.RefundReceive;
+import com.flyonsky.weixin.data.pay.ReverseParam;
+import com.flyonsky.weixin.data.pay.ReverseReceive;
+import com.flyonsky.weixin.data.pay.ScanCallBackReceive;
+import com.flyonsky.weixin.data.pay.ScanPayParam;
+import com.flyonsky.weixin.data.pay.UnifiedOrderParam;
+import com.flyonsky.weixin.data.pay.UnifiedOrderReceive;
 
 /**
  * 微信支付相关接口
@@ -25,7 +31,7 @@ public interface PayHandle {
 	 * @param key API密钥
 	 * @return 下单结果
 	 */
-	UnifiedOrderReceive unifiedOrder(UnifiedOrderData orderData, String key);
+	UnifiedOrderReceive unifiedOrder(UnifiedOrderParam orderData, String key);
 	
 	/**
 	 * 网页端调起支付API时所用的数据
@@ -50,7 +56,7 @@ public interface PayHandle {
 	 * @param key API密钥
 	 * @return
 	 */
-	PayReceiveBase closeOrder(CloseOrderParam param, String key);
+	PayReceive closeOrder(CloseOrderParam param, String key);
 	
 	/**
 	 * 申请退款
@@ -67,4 +73,36 @@ public interface PayHandle {
 	 * @return
 	 */
 	RefundQueryReceive queryRefund(RefundQueryParam param, String key);
+	
+	/**
+	 * 提交刷卡支付API
+	 * @param param 刷卡支付请求参数
+	 * @param key API密钥
+	 * @return
+	 */
+	MicroPayReceive microPay(MicroPayParam param, String key);
+	
+	/**
+	 * 撤销订单API,请求需要双向证书
+	 * @param param 撤销订单请求参数
+	 * @param key API密钥
+	 * @return
+	 */
+	ReverseReceive reverse(ReverseParam param, String key);
+	
+	/**
+	 * 扫码支付模式一生成二维码字符串
+	 * @param param 扫码支付模式一生成二维码的请求参数
+	 * @param key API密钥
+	 * @return
+	 */
+	String scanPay(ScanPayParam param, String key);
+	
+	/**
+	 * 扫码支付模式一回调地址处理
+	 * @param param 统一下单响应结果
+	 * @param key API密钥
+	 * @return
+	 */
+	ScanCallBackReceive scanCallBack(UnifiedOrderReceive param, String key);
 }

@@ -89,6 +89,11 @@
 		<artifactId>httpclient</artifactId>
 		<version>${httpclient.version}</version>
 	</dependency>
+	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpmime</artifactId>
+	    <version>${httpclient.version}</version>
+	</dependency>
     <dependency>
 		<groupId>com.fasterxml.jackson.core</groupId>
 		<artifactId>jackson-databind</artifactId>
@@ -99,7 +104,7 @@
 	    <artifactId>jackson-dataformat-xml</artifactId>
 	    <version>${jackson.version}</version>
 	</dependency>
-	<dependency>
+ 	<dependency>
 	    <groupId>com.fasterxml</groupId>
 	    <artifactId>aalto-xml</artifactId>
 	    <version>1.0.0</version>
@@ -119,6 +124,11 @@
 	    <artifactId>javase</artifactId>
 	    <version>${zxing.version}</version>
 	</dependency>
+	<dependency>
+	    <groupId>commons-io</groupId>
+	    <artifactId>commons-io</artifactId>
+	    <version>${commons.io.version}</version>
+	</dependency>
   </dependencies>
   <properties>
   	<spring.version>4.1.6.RELEASE</spring.version>
@@ -131,5 +141,6 @@
   	<httpclient.version>4.5.1</httpclient.version>
   	<jackson.version>2.7.3</jackson.version>
  	<zxing.version>3.2.1</zxing.version>
+ 	<commons.io.version>2.5</commons.io.version>
   </properties>
 </project>

@@ -37,5 +37,25 @@ public enum EnumMsgType {
 	/**
 	 * 链接消息
 	 */
-	link
+	link,
+	/**
+	 * 音乐消息
+	 */
+	music,
+	/**
+	 * 图文消息
+	 */
+	news,
+	/**
+	 * 图文消息,客服回复中使用素材中的图文消息
+	 */
+	mpnews,
+	/**
+	 * 卡券消息
+	 */
+	wxcard,
+	/**
+	 * 消息转发到多客服
+	 */
+	transfer_customer_service
 }

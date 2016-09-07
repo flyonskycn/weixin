@@ -1,9 +1,8 @@
 package com.flyonsky.weixin;
 
-import org.dom4j.Document;
-
-import com.flyonsky.weixin.data.MessageData;
-import com.flyonsky.weixin.data.UserInfo;
+import com.flyonsky.weixin.data.AccessToken;
+import com.flyonsky.weixin.data.EnumQrcodeType;
+import com.flyonsky.weixin.data.QrcodeReceive;
 
 /**
  * 微信服务号处理接口
@@ -29,7 +28,7 @@ public interface ServiceHandle {
 	 * @param secret 第三方用户唯一凭证密钥，即appsecret
 	 * @return access_token 
 	 */
-	String accessToken(String appid,String secret);
+	AccessToken accessToken(String appid,String secret);
 	
 	/**
 	 * 微信服务号获取access token
@@ -38,14 +37,30 @@ public interface ServiceHandle {
 	 * @param isObtain 是否重新向微信服务器获取access token
 	 * @return access_token 
 	 */
-	String accessToken(String appid,String secret, boolean isObtain);
+	AccessToken accessToken(String appid,String secret, boolean isObtain);
 	
 	/**
-	 * 微信服务号获取用户信息
-	 * @param appid 第三方用户唯一凭证
-	 * @param secret 第三方用户唯一凭证密钥，即appsecret
-	 * @param openid 
+	 * 获取js-sdk的ticket
+	 * @param appid 公众号appid
+	 * @param accessToken 对应公从号的 accessToken
 	 * @return
 	 */
-	UserInfo userInfo(String appid,String secret,String openid) throws WeixinException;
+	String ticket(String appid, String accessToken);
+	
+	/**
+	 * 微信二维码生成
+	 * @param accessToken 对应公从号的 accessToken
+	 * @param qrcodeType 二维码类型
+	 * @param sceneId 场景值ID，临时二维码时为32位非0整型，永久二维码时最大值为100000（目前参数只支持1--100000）
+	 * @param expireSeconds 该二维码有效时间，以秒为单位。 最大不超过2592000（即30天），此字段如果不填，则默认有效期为30秒。
+	 * @return
+	 */
+	QrcodeReceive createQrcode(String accessToken, EnumQrcodeType qrcodeType, int sceneId, long expireSeconds);
+	
+	/**
+	 * 获取微信显示二维码的URL地址
+	 * @param ticket 获取二码是使用的ticket
+	 * @return
+	 */
+	String showQrcode(String ticket);
 }

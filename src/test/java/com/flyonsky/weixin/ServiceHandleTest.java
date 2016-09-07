@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.flyonsky.BaseSpringJUnit;
-import com.flyonsky.weixin.data.UserInfo;
+import com.flyonsky.weixin.data.AccessToken;
 
 public class ServiceHandleTest extends BaseSpringJUnit{
 	
@@ -41,15 +41,9 @@ public class ServiceHandleTest extends BaseSpringJUnit{
 	
 	@Test
 	public void testAccessToken(){
-		String token = this.getServiceHandle().accessToken(this.getAppId(), this.getAppSecret());
+		AccessToken token = this.getServiceHandle().accessToken(this.getAppId(), this.getAppSecret());
 		Assert.assertNotNull(token);
-		Assert.assertTrue(token.length() > 1);
-	}
-	
-	@Test
-	public void testUserInfo() throws WeixinException{
-		UserInfo info = this.getServiceHandle().userInfo(this.getAppId(), this.getAppSecret(), this.getOpenId());
-		Assert.assertNotNull(info);
+		Assert.assertTrue(token.getAccessToken().length() > 1);
 	}
 
 	public String getAppSecret() {

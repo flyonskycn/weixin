@@ -13,16 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.flyonsky.BaseSpringJUnit;
-import com.flyonsky.weixin.data.CloseOrderParam;
 import com.flyonsky.weixin.data.EnumCurrencyType;
 import com.flyonsky.weixin.data.EnumTradeState;
 import com.flyonsky.weixin.data.EnumTradeType;
-import com.flyonsky.weixin.data.JSPayData;
-import com.flyonsky.weixin.data.OrderQueryParam;
-import com.flyonsky.weixin.data.OrderQueryReceive;
-import com.flyonsky.weixin.data.PayReceiveBase;
-import com.flyonsky.weixin.data.UnifiedOrderData;
-import com.flyonsky.weixin.data.UnifiedOrderReceive;
+import com.flyonsky.weixin.data.pay.CloseOrderParam;
+import com.flyonsky.weixin.data.pay.JSPayData;
+import com.flyonsky.weixin.data.pay.OrderQueryParam;
+import com.flyonsky.weixin.data.pay.OrderQueryReceive;
+import com.flyonsky.weixin.data.pay.PayReceive;
+import com.flyonsky.weixin.data.pay.UnifiedOrderParam;
+import com.flyonsky.weixin.data.pay.UnifiedOrderReceive;
 
 public class PayHandleTest extends BaseSpringJUnit{
 	
@@ -53,7 +53,7 @@ public class PayHandleTest extends BaseSpringJUnit{
 	 */
 	@Test
 	public void testUnifiedOrderByJsapi(){
-		UnifiedOrderData data = this.createOrderData(EnumTradeType.JSAPI, openId);
+		UnifiedOrderParam data = this.createOrderData(EnumTradeType.JSAPI, openId);
 		
 		UnifiedOrderReceive receive = this.getPayHandle().unifiedOrder(data, key);
 		Assert.assertNotNull(receive);
@@ -67,7 +67,7 @@ public class PayHandleTest extends BaseSpringJUnit{
 	 */
 	@Test
 	public void testUnifiedOrderByNative(){
-		UnifiedOrderData data = this.createOrderData(EnumTradeType.NATIVE, null);
+		UnifiedOrderParam data = this.createOrderData(EnumTradeType.NATIVE, null);
 		
 		UnifiedOrderReceive receive = this.getPayHandle().unifiedOrder(data, key);
 		Assert.assertNotNull(receive);
@@ -82,7 +82,7 @@ public class PayHandleTest extends BaseSpringJUnit{
 	 */
 	@Test
 	public void testJsPayOrder(){
-		UnifiedOrderData data = this.createOrderData(EnumTradeType.JSAPI, openId);
+		UnifiedOrderParam data = this.createOrderData(EnumTradeType.JSAPI, openId);
 		
 		UnifiedOrderReceive receive = this.getPayHandle().unifiedOrder(data, key);
 		Assert.assertNotNull(receive);
@@ -100,7 +100,7 @@ public class PayHandleTest extends BaseSpringJUnit{
 	 */
 	@Test
 	public void testQueryOrder(){
-		UnifiedOrderData data = this.createOrderData(EnumTradeType.NATIVE, null);
+		UnifiedOrderParam data = this.createOrderData(EnumTradeType.NATIVE, null);
 		UnifiedOrderReceive receive = this.getPayHandle().unifiedOrder(data, key);
 		
 		Assert.assertNotNull(receive);
@@ -124,7 +124,7 @@ public class PayHandleTest extends BaseSpringJUnit{
 	 */
 	@Test
 	public void testCloseOrder(){
-		UnifiedOrderData data = this.createOrderData(EnumTradeType.NATIVE, null);
+		UnifiedOrderParam data = this.createOrderData(EnumTradeType.NATIVE, null);
 		UnifiedOrderReceive receive = this.getPayHandle().unifiedOrder(data, key);
 		
 		Assert.assertNotNull(receive);
@@ -137,7 +137,7 @@ public class PayHandleTest extends BaseSpringJUnit{
 		param.setMchId(mchId);
 		param.setOutTradeNo(data.getOutTradeNo());
 		
-		PayReceiveBase receiveData = this.getPayHandle().closeOrder(param, key);
+		PayReceive receiveData = this.getPayHandle().closeOrder(param, key);
 		
 		Assert.assertNotNull(receiveData);
 		Assert.assertEquals(WeixinConst.CODE_SUCCESS, receiveData.getReturnCode());
@@ -149,8 +149,8 @@ public class PayHandleTest extends BaseSpringJUnit{
 	 * @param openid 公众号下的openid
 	 * @return
 	 */
-	private UnifiedOrderData createOrderData(EnumTradeType type,String openid){
-		UnifiedOrderData data = new UnifiedOrderData();
+	private UnifiedOrderParam createOrderData(EnumTradeType type,String openid){
+		UnifiedOrderParam data = new UnifiedOrderParam();
 		data.setAppId(appId);
 		data.setMchId(mchId);
 		data.setBody("good");

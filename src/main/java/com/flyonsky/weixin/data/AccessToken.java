@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Administrator
  *
  */
-public class AccessToken extends ServiceBaseParam{
+public class AccessToken extends ServiceReceive{
 
 	@JsonProperty("access_token")
 	private String accessToken;
